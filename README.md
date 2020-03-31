@@ -2,4 +2,4 @@
 David González Gámez
 201610648
 
-# Ejecutar el archivo gramatica.py IDLE de pyton 
+# Ejecutar el archivo gramatica.py con IDLE de pyton 
