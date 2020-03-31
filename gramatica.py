@@ -333,5 +333,4 @@ parser = yacc.yacc()
 
 f = open("./entrada.txt", "r")
 input = f.read()
-print(input)
 parser.parse(input)
