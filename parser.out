@@ -1,0 +1,1040 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> INI
+Rule 1     INI -> INSTRUCCIONES
+Rule 2     INSTRUCCIONES -> INSTRUCCIONES INSTRUCCION
+Rule 3     INSTRUCCIONES -> INSTRUCCION
+Rule 4     INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC
+Rule 5     INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+Rule 6     INSTRUCCION -> Nada
+Rule 7     S -> L
+Rule 8     L -> L or M
+Rule 9     L -> M
+Rule 10    M -> M and NEG
+Rule 11    M -> NEG
+Rule 12    NEG -> not S
+Rule 13    NEG -> R
+Rule 14    R -> E mayor E
+Rule 15    R -> E menor E
+Rule 16    R -> E igualdad E
+Rule 17    R -> E diferente E
+Rule 18    R -> parA S parC
+Rule 19    R -> True
+Rule 20    R -> False
+Rule 21    E -> E mas T
+Rule 22    E -> E menos T
+Rule 23    E -> T
+Rule 24    T -> T por F
+Rule 25    T -> T div F
+Rule 26    T -> F
+Rule 27    F -> parA E parC
+Rule 28    F -> numero
+Rule 29    F -> id
+
+Terminals, with rules where they appear
+
+Else                 : 5
+False                : 20
+If                   : 4 5
+Nada                 : 6
+True                 : 19
+and                  : 10
+diferente            : 17
+div                  : 25
+error                : 
+id                   : 29
+igualdad             : 16
+llavA                : 4 5 5
+llavC                : 4 5 5
+mas                  : 21
+mayor                : 14
+menor                : 15
+menos                : 22
+not                  : 12
+numero               : 28
+or                   : 8
+parA                 : 4 5 18 27
+parC                 : 4 5 18 27
+por                  : 24
+
+Nonterminals, with rules where they appear
+
+E                    : 14 14 15 15 16 16 17 17 21 22 27
+F                    : 24 25 26
+INI                  : 0
+INSTRUCCION          : 2 3
+INSTRUCCIONES        : 1 2 4 5 5
+L                    : 7 8
+M                    : 8 9 10
+NEG                  : 10 11
+R                    : 13
+S                    : 4 5 12 18
+T                    : 21 22 23 24 25
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . INI
+    (1) INI -> . INSTRUCCIONES
+    (2) INSTRUCCIONES -> . INSTRUCCIONES INSTRUCCION
+    (3) INSTRUCCIONES -> . INSTRUCCION
+    (4) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC
+    (5) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+    (6) INSTRUCCION -> . Nada
+
+    If              shift and go to state 4
+    Nada            shift and go to state 5
+
+    INI                            shift and go to state 1
+    INSTRUCCIONES                  shift and go to state 2
+    INSTRUCCION                    shift and go to state 3
+
+state 1
+
+    (0) S' -> INI .
+
+
+
+state 2
+
+    (1) INI -> INSTRUCCIONES .
+    (2) INSTRUCCIONES -> INSTRUCCIONES . INSTRUCCION
+    (4) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC
+    (5) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+    (6) INSTRUCCION -> . Nada
+
+    $end            reduce using rule 1 (INI -> INSTRUCCIONES .)
+    If              shift and go to state 4
+    Nada            shift and go to state 5
+
+    INSTRUCCION                    shift and go to state 6
+
+state 3
+
+    (3) INSTRUCCIONES -> INSTRUCCION .
+
+    If              reduce using rule 3 (INSTRUCCIONES -> INSTRUCCION .)
+    Nada            reduce using rule 3 (INSTRUCCIONES -> INSTRUCCION .)
+    $end            reduce using rule 3 (INSTRUCCIONES -> INSTRUCCION .)
+    llavC           reduce using rule 3 (INSTRUCCIONES -> INSTRUCCION .)
+
+
+state 4
+
+    (4) INSTRUCCION -> If . parA S parC llavA INSTRUCCIONES llavC
+    (5) INSTRUCCION -> If . parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+
+    parA            shift and go to state 7
+
+
+state 5
+
+    (6) INSTRUCCION -> Nada .
+
+    If              reduce using rule 6 (INSTRUCCION -> Nada .)
+    Nada            reduce using rule 6 (INSTRUCCION -> Nada .)
+    $end            reduce using rule 6 (INSTRUCCION -> Nada .)
+    llavC           reduce using rule 6 (INSTRUCCION -> Nada .)
+
+
+state 6
+
+    (2) INSTRUCCIONES -> INSTRUCCIONES INSTRUCCION .
+
+    If              reduce using rule 2 (INSTRUCCIONES -> INSTRUCCIONES INSTRUCCION .)
+    Nada            reduce using rule 2 (INSTRUCCIONES -> INSTRUCCIONES INSTRUCCION .)
+    $end            reduce using rule 2 (INSTRUCCIONES -> INSTRUCCIONES INSTRUCCION .)
+    llavC           reduce using rule 2 (INSTRUCCIONES -> INSTRUCCIONES INSTRUCCION .)
+
+
+state 7
+
+    (4) INSTRUCCION -> If parA . S parC llavA INSTRUCCIONES llavC
+    (5) INSTRUCCION -> If parA . S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+    (7) S -> . L
+    (8) L -> . L or M
+    (9) L -> . M
+    (10) M -> . M and NEG
+    (11) M -> . NEG
+    (12) NEG -> . not S
+    (13) NEG -> . R
+    (14) R -> . E mayor E
+    (15) R -> . E menor E
+    (16) R -> . E igualdad E
+    (17) R -> . E diferente E
+    (18) R -> . parA S parC
+    (19) R -> . True
+    (20) R -> . False
+    (21) E -> . E mas T
+    (22) E -> . E menos T
+    (23) E -> . T
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    not             shift and go to state 13
+    parA            shift and go to state 8
+    True            shift and go to state 16
+    False           shift and go to state 17
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    S                              shift and go to state 9
+    L                              shift and go to state 10
+    M                              shift and go to state 11
+    NEG                            shift and go to state 12
+    R                              shift and go to state 14
+    E                              shift and go to state 15
+    T                              shift and go to state 18
+    F                              shift and go to state 19
+
+state 8
+
+    (18) R -> parA . S parC
+    (27) F -> parA . E parC
+    (7) S -> . L
+    (21) E -> . E mas T
+    (22) E -> . E menos T
+    (23) E -> . T
+    (8) L -> . L or M
+    (9) L -> . M
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (10) M -> . M and NEG
+    (11) M -> . NEG
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+    (12) NEG -> . not S
+    (13) NEG -> . R
+    (14) R -> . E mayor E
+    (15) R -> . E menor E
+    (16) R -> . E igualdad E
+    (17) R -> . E diferente E
+    (18) R -> . parA S parC
+    (19) R -> . True
+    (20) R -> . False
+
+    parA            shift and go to state 22
+    numero          shift and go to state 20
+    id              shift and go to state 21
+    not             shift and go to state 13
+    True            shift and go to state 16
+    False           shift and go to state 17
+
+    S                              shift and go to state 23
+    E                              shift and go to state 24
+    L                              shift and go to state 10
+    T                              shift and go to state 18
+    M                              shift and go to state 11
+    F                              shift and go to state 19
+    NEG                            shift and go to state 12
+    R                              shift and go to state 14
+
+state 9
+
+    (4) INSTRUCCION -> If parA S . parC llavA INSTRUCCIONES llavC
+    (5) INSTRUCCION -> If parA S . parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+
+    parC            shift and go to state 25
+
+
+state 10
+
+    (7) S -> L .
+    (8) L -> L . or M
+
+  ! shift/reduce conflict for or resolved as shift
+    parC            reduce using rule 7 (S -> L .)
+    and             reduce using rule 7 (S -> L .)
+    or              shift and go to state 26
+
+  ! or              [ reduce using rule 7 (S -> L .) ]
+
+
+state 11
+
+    (9) L -> M .
+    (10) M -> M . and NEG
+
+  ! shift/reduce conflict for and resolved as shift
+    or              reduce using rule 9 (L -> M .)
+    parC            reduce using rule 9 (L -> M .)
+    and             shift and go to state 27
+
+  ! and             [ reduce using rule 9 (L -> M .) ]
+
+
+state 12
+
+    (11) M -> NEG .
+
+    and             reduce using rule 11 (M -> NEG .)
+    or              reduce using rule 11 (M -> NEG .)
+    parC            reduce using rule 11 (M -> NEG .)
+
+
+state 13
+
+    (12) NEG -> not . S
+    (7) S -> . L
+    (8) L -> . L or M
+    (9) L -> . M
+    (10) M -> . M and NEG
+    (11) M -> . NEG
+    (12) NEG -> . not S
+    (13) NEG -> . R
+    (14) R -> . E mayor E
+    (15) R -> . E menor E
+    (16) R -> . E igualdad E
+    (17) R -> . E diferente E
+    (18) R -> . parA S parC
+    (19) R -> . True
+    (20) R -> . False
+    (21) E -> . E mas T
+    (22) E -> . E menos T
+    (23) E -> . T
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    not             shift and go to state 13
+    parA            shift and go to state 8
+    True            shift and go to state 16
+    False           shift and go to state 17
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    S                              shift and go to state 28
+    L                              shift and go to state 10
+    M                              shift and go to state 11
+    NEG                            shift and go to state 12
+    R                              shift and go to state 14
+    E                              shift and go to state 15
+    T                              shift and go to state 18
+    F                              shift and go to state 19
+
+state 14
+
+    (13) NEG -> R .
+
+    and             reduce using rule 13 (NEG -> R .)
+    or              reduce using rule 13 (NEG -> R .)
+    parC            reduce using rule 13 (NEG -> R .)
+
+
+state 15
+
+    (14) R -> E . mayor E
+    (15) R -> E . menor E
+    (16) R -> E . igualdad E
+    (17) R -> E . diferente E
+    (21) E -> E . mas T
+    (22) E -> E . menos T
+
+    mayor           shift and go to state 29
+    menor           shift and go to state 30
+    igualdad        shift and go to state 31
+    diferente       shift and go to state 32
+    mas             shift and go to state 33
+    menos           shift and go to state 34
+
+
+state 16
+
+    (19) R -> True .
+
+    and             reduce using rule 19 (R -> True .)
+    or              reduce using rule 19 (R -> True .)
+    parC            reduce using rule 19 (R -> True .)
+
+
+state 17
+
+    (20) R -> False .
+
+    and             reduce using rule 20 (R -> False .)
+    or              reduce using rule 20 (R -> False .)
+    parC            reduce using rule 20 (R -> False .)
+
+
+state 18
+
+    (23) E -> T .
+    (24) T -> T . por F
+    (25) T -> T . div F
+
+    mayor           reduce using rule 23 (E -> T .)
+    menor           reduce using rule 23 (E -> T .)
+    igualdad        reduce using rule 23 (E -> T .)
+    diferente       reduce using rule 23 (E -> T .)
+    mas             reduce using rule 23 (E -> T .)
+    menos           reduce using rule 23 (E -> T .)
+    parC            reduce using rule 23 (E -> T .)
+    and             reduce using rule 23 (E -> T .)
+    or              reduce using rule 23 (E -> T .)
+    por             shift and go to state 35
+    div             shift and go to state 36
+
+
+state 19
+
+    (26) T -> F .
+
+    por             reduce using rule 26 (T -> F .)
+    div             reduce using rule 26 (T -> F .)
+    mayor           reduce using rule 26 (T -> F .)
+    menor           reduce using rule 26 (T -> F .)
+    igualdad        reduce using rule 26 (T -> F .)
+    diferente       reduce using rule 26 (T -> F .)
+    mas             reduce using rule 26 (T -> F .)
+    menos           reduce using rule 26 (T -> F .)
+    parC            reduce using rule 26 (T -> F .)
+    and             reduce using rule 26 (T -> F .)
+    or              reduce using rule 26 (T -> F .)
+
+
+state 20
+
+    (28) F -> numero .
+
+    por             reduce using rule 28 (F -> numero .)
+    div             reduce using rule 28 (F -> numero .)
+    mayor           reduce using rule 28 (F -> numero .)
+    menor           reduce using rule 28 (F -> numero .)
+    igualdad        reduce using rule 28 (F -> numero .)
+    diferente       reduce using rule 28 (F -> numero .)
+    mas             reduce using rule 28 (F -> numero .)
+    menos           reduce using rule 28 (F -> numero .)
+    parC            reduce using rule 28 (F -> numero .)
+    and             reduce using rule 28 (F -> numero .)
+    or              reduce using rule 28 (F -> numero .)
+
+
+state 21
+
+    (29) F -> id .
+
+    por             reduce using rule 29 (F -> id .)
+    div             reduce using rule 29 (F -> id .)
+    mayor           reduce using rule 29 (F -> id .)
+    menor           reduce using rule 29 (F -> id .)
+    igualdad        reduce using rule 29 (F -> id .)
+    diferente       reduce using rule 29 (F -> id .)
+    mas             reduce using rule 29 (F -> id .)
+    menos           reduce using rule 29 (F -> id .)
+    parC            reduce using rule 29 (F -> id .)
+    and             reduce using rule 29 (F -> id .)
+    or              reduce using rule 29 (F -> id .)
+
+
+state 22
+
+    (27) F -> parA . E parC
+    (18) R -> parA . S parC
+    (21) E -> . E mas T
+    (22) E -> . E menos T
+    (23) E -> . T
+    (7) S -> . L
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (8) L -> . L or M
+    (9) L -> . M
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+    (10) M -> . M and NEG
+    (11) M -> . NEG
+    (12) NEG -> . not S
+    (13) NEG -> . R
+    (14) R -> . E mayor E
+    (15) R -> . E menor E
+    (16) R -> . E igualdad E
+    (17) R -> . E diferente E
+    (18) R -> . parA S parC
+    (19) R -> . True
+    (20) R -> . False
+
+    parA            shift and go to state 22
+    numero          shift and go to state 20
+    id              shift and go to state 21
+    not             shift and go to state 13
+    True            shift and go to state 16
+    False           shift and go to state 17
+
+    E                              shift and go to state 24
+    S                              shift and go to state 23
+    T                              shift and go to state 18
+    L                              shift and go to state 10
+    F                              shift and go to state 19
+    M                              shift and go to state 11
+    NEG                            shift and go to state 12
+    R                              shift and go to state 14
+
+state 23
+
+    (18) R -> parA S . parC
+
+    parC            shift and go to state 37
+
+
+state 24
+
+    (27) F -> parA E . parC
+    (21) E -> E . mas T
+    (22) E -> E . menos T
+    (14) R -> E . mayor E
+    (15) R -> E . menor E
+    (16) R -> E . igualdad E
+    (17) R -> E . diferente E
+
+    parC            shift and go to state 38
+    mas             shift and go to state 33
+    menos           shift and go to state 34
+    mayor           shift and go to state 29
+    menor           shift and go to state 30
+    igualdad        shift and go to state 31
+    diferente       shift and go to state 32
+
+
+state 25
+
+    (4) INSTRUCCION -> If parA S parC . llavA INSTRUCCIONES llavC
+    (5) INSTRUCCION -> If parA S parC . llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+
+    llavA           shift and go to state 39
+
+
+state 26
+
+    (8) L -> L or . M
+    (10) M -> . M and NEG
+    (11) M -> . NEG
+    (12) NEG -> . not S
+    (13) NEG -> . R
+    (14) R -> . E mayor E
+    (15) R -> . E menor E
+    (16) R -> . E igualdad E
+    (17) R -> . E diferente E
+    (18) R -> . parA S parC
+    (19) R -> . True
+    (20) R -> . False
+    (21) E -> . E mas T
+    (22) E -> . E menos T
+    (23) E -> . T
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    not             shift and go to state 13
+    parA            shift and go to state 8
+    True            shift and go to state 16
+    False           shift and go to state 17
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    M                              shift and go to state 40
+    NEG                            shift and go to state 12
+    R                              shift and go to state 14
+    E                              shift and go to state 15
+    T                              shift and go to state 18
+    F                              shift and go to state 19
+
+state 27
+
+    (10) M -> M and . NEG
+    (12) NEG -> . not S
+    (13) NEG -> . R
+    (14) R -> . E mayor E
+    (15) R -> . E menor E
+    (16) R -> . E igualdad E
+    (17) R -> . E diferente E
+    (18) R -> . parA S parC
+    (19) R -> . True
+    (20) R -> . False
+    (21) E -> . E mas T
+    (22) E -> . E menos T
+    (23) E -> . T
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    not             shift and go to state 13
+    parA            shift and go to state 8
+    True            shift and go to state 16
+    False           shift and go to state 17
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    NEG                            shift and go to state 41
+    R                              shift and go to state 14
+    E                              shift and go to state 15
+    T                              shift and go to state 18
+    F                              shift and go to state 19
+
+state 28
+
+    (12) NEG -> not S .
+
+    and             reduce using rule 12 (NEG -> not S .)
+    or              reduce using rule 12 (NEG -> not S .)
+    parC            reduce using rule 12 (NEG -> not S .)
+
+
+state 29
+
+    (14) R -> E mayor . E
+    (21) E -> . E mas T
+    (22) E -> . E menos T
+    (23) E -> . T
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    parA            shift and go to state 43
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    E                              shift and go to state 42
+    T                              shift and go to state 18
+    F                              shift and go to state 19
+
+state 30
+
+    (15) R -> E menor . E
+    (21) E -> . E mas T
+    (22) E -> . E menos T
+    (23) E -> . T
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    parA            shift and go to state 43
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    E                              shift and go to state 44
+    T                              shift and go to state 18
+    F                              shift and go to state 19
+
+state 31
+
+    (16) R -> E igualdad . E
+    (21) E -> . E mas T
+    (22) E -> . E menos T
+    (23) E -> . T
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    parA            shift and go to state 43
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    E                              shift and go to state 45
+    T                              shift and go to state 18
+    F                              shift and go to state 19
+
+state 32
+
+    (17) R -> E diferente . E
+    (21) E -> . E mas T
+    (22) E -> . E menos T
+    (23) E -> . T
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    parA            shift and go to state 43
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    E                              shift and go to state 46
+    T                              shift and go to state 18
+    F                              shift and go to state 19
+
+state 33
+
+    (21) E -> E mas . T
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    parA            shift and go to state 43
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    T                              shift and go to state 47
+    F                              shift and go to state 19
+
+state 34
+
+    (22) E -> E menos . T
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    parA            shift and go to state 43
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    T                              shift and go to state 48
+    F                              shift and go to state 19
+
+state 35
+
+    (24) T -> T por . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    parA            shift and go to state 43
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    F                              shift and go to state 49
+
+state 36
+
+    (25) T -> T div . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    parA            shift and go to state 43
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    F                              shift and go to state 50
+
+state 37
+
+    (18) R -> parA S parC .
+
+    and             reduce using rule 18 (R -> parA S parC .)
+    or              reduce using rule 18 (R -> parA S parC .)
+    parC            reduce using rule 18 (R -> parA S parC .)
+
+
+state 38
+
+    (27) F -> parA E parC .
+
+    por             reduce using rule 27 (F -> parA E parC .)
+    div             reduce using rule 27 (F -> parA E parC .)
+    mayor           reduce using rule 27 (F -> parA E parC .)
+    menor           reduce using rule 27 (F -> parA E parC .)
+    igualdad        reduce using rule 27 (F -> parA E parC .)
+    diferente       reduce using rule 27 (F -> parA E parC .)
+    mas             reduce using rule 27 (F -> parA E parC .)
+    menos           reduce using rule 27 (F -> parA E parC .)
+    parC            reduce using rule 27 (F -> parA E parC .)
+    and             reduce using rule 27 (F -> parA E parC .)
+    or              reduce using rule 27 (F -> parA E parC .)
+
+
+state 39
+
+    (4) INSTRUCCION -> If parA S parC llavA . INSTRUCCIONES llavC
+    (5) INSTRUCCION -> If parA S parC llavA . INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+    (2) INSTRUCCIONES -> . INSTRUCCIONES INSTRUCCION
+    (3) INSTRUCCIONES -> . INSTRUCCION
+    (4) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC
+    (5) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+    (6) INSTRUCCION -> . Nada
+
+    If              shift and go to state 4
+    Nada            shift and go to state 5
+
+    INSTRUCCIONES                  shift and go to state 51
+    INSTRUCCION                    shift and go to state 3
+
+state 40
+
+    (8) L -> L or M .
+    (10) M -> M . and NEG
+
+    or              reduce using rule 8 (L -> L or M .)
+    parC            reduce using rule 8 (L -> L or M .)
+    and             shift and go to state 27
+
+  ! and             [ reduce using rule 8 (L -> L or M .) ]
+
+
+state 41
+
+    (10) M -> M and NEG .
+
+    and             reduce using rule 10 (M -> M and NEG .)
+    or              reduce using rule 10 (M -> M and NEG .)
+    parC            reduce using rule 10 (M -> M and NEG .)
+
+
+state 42
+
+    (14) R -> E mayor E .
+    (21) E -> E . mas T
+    (22) E -> E . menos T
+
+    and             reduce using rule 14 (R -> E mayor E .)
+    or              reduce using rule 14 (R -> E mayor E .)
+    parC            reduce using rule 14 (R -> E mayor E .)
+    mas             shift and go to state 33
+    menos           shift and go to state 34
+
+
+state 43
+
+    (27) F -> parA . E parC
+    (21) E -> . E mas T
+    (22) E -> . E menos T
+    (23) E -> . T
+    (24) T -> . T por F
+    (25) T -> . T div F
+    (26) T -> . F
+    (27) F -> . parA E parC
+    (28) F -> . numero
+    (29) F -> . id
+
+    parA            shift and go to state 43
+    numero          shift and go to state 20
+    id              shift and go to state 21
+
+    E                              shift and go to state 52
+    T                              shift and go to state 18
+    F                              shift and go to state 19
+
+state 44
+
+    (15) R -> E menor E .
+    (21) E -> E . mas T
+    (22) E -> E . menos T
+
+    and             reduce using rule 15 (R -> E menor E .)
+    or              reduce using rule 15 (R -> E menor E .)
+    parC            reduce using rule 15 (R -> E menor E .)
+    mas             shift and go to state 33
+    menos           shift and go to state 34
+
+
+state 45
+
+    (16) R -> E igualdad E .
+    (21) E -> E . mas T
+    (22) E -> E . menos T
+
+    and             reduce using rule 16 (R -> E igualdad E .)
+    or              reduce using rule 16 (R -> E igualdad E .)
+    parC            reduce using rule 16 (R -> E igualdad E .)
+    mas             shift and go to state 33
+    menos           shift and go to state 34
+
+
+state 46
+
+    (17) R -> E diferente E .
+    (21) E -> E . mas T
+    (22) E -> E . menos T
+
+    and             reduce using rule 17 (R -> E diferente E .)
+    or              reduce using rule 17 (R -> E diferente E .)
+    parC            reduce using rule 17 (R -> E diferente E .)
+    mas             shift and go to state 33
+    menos           shift and go to state 34
+
+
+state 47
+
+    (21) E -> E mas T .
+    (24) T -> T . por F
+    (25) T -> T . div F
+
+    mayor           reduce using rule 21 (E -> E mas T .)
+    menor           reduce using rule 21 (E -> E mas T .)
+    igualdad        reduce using rule 21 (E -> E mas T .)
+    diferente       reduce using rule 21 (E -> E mas T .)
+    mas             reduce using rule 21 (E -> E mas T .)
+    menos           reduce using rule 21 (E -> E mas T .)
+    parC            reduce using rule 21 (E -> E mas T .)
+    and             reduce using rule 21 (E -> E mas T .)
+    or              reduce using rule 21 (E -> E mas T .)
+    por             shift and go to state 35
+    div             shift and go to state 36
+
+
+state 48
+
+    (22) E -> E menos T .
+    (24) T -> T . por F
+    (25) T -> T . div F
+
+    mayor           reduce using rule 22 (E -> E menos T .)
+    menor           reduce using rule 22 (E -> E menos T .)
+    igualdad        reduce using rule 22 (E -> E menos T .)
+    diferente       reduce using rule 22 (E -> E menos T .)
+    mas             reduce using rule 22 (E -> E menos T .)
+    menos           reduce using rule 22 (E -> E menos T .)
+    parC            reduce using rule 22 (E -> E menos T .)
+    and             reduce using rule 22 (E -> E menos T .)
+    or              reduce using rule 22 (E -> E menos T .)
+    por             shift and go to state 35
+    div             shift and go to state 36
+
+
+state 49
+
+    (24) T -> T por F .
+
+    por             reduce using rule 24 (T -> T por F .)
+    div             reduce using rule 24 (T -> T por F .)
+    mayor           reduce using rule 24 (T -> T por F .)
+    menor           reduce using rule 24 (T -> T por F .)
+    igualdad        reduce using rule 24 (T -> T por F .)
+    diferente       reduce using rule 24 (T -> T por F .)
+    mas             reduce using rule 24 (T -> T por F .)
+    menos           reduce using rule 24 (T -> T por F .)
+    parC            reduce using rule 24 (T -> T por F .)
+    and             reduce using rule 24 (T -> T por F .)
+    or              reduce using rule 24 (T -> T por F .)
+
+
+state 50
+
+    (25) T -> T div F .
+
+    por             reduce using rule 25 (T -> T div F .)
+    div             reduce using rule 25 (T -> T div F .)
+    mayor           reduce using rule 25 (T -> T div F .)
+    menor           reduce using rule 25 (T -> T div F .)
+    igualdad        reduce using rule 25 (T -> T div F .)
+    diferente       reduce using rule 25 (T -> T div F .)
+    mas             reduce using rule 25 (T -> T div F .)
+    menos           reduce using rule 25 (T -> T div F .)
+    parC            reduce using rule 25 (T -> T div F .)
+    and             reduce using rule 25 (T -> T div F .)
+    or              reduce using rule 25 (T -> T div F .)
+
+
+state 51
+
+    (4) INSTRUCCION -> If parA S parC llavA INSTRUCCIONES . llavC
+    (5) INSTRUCCION -> If parA S parC llavA INSTRUCCIONES . llavC Else llavA INSTRUCCIONES llavC
+    (2) INSTRUCCIONES -> INSTRUCCIONES . INSTRUCCION
+    (4) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC
+    (5) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+    (6) INSTRUCCION -> . Nada
+
+    llavC           shift and go to state 53
+    If              shift and go to state 4
+    Nada            shift and go to state 5
+
+    INSTRUCCION                    shift and go to state 6
+
+state 52
+
+    (27) F -> parA E . parC
+    (21) E -> E . mas T
+    (22) E -> E . menos T
+
+    parC            shift and go to state 38
+    mas             shift and go to state 33
+    menos           shift and go to state 34
+
+
+state 53
+
+    (4) INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC .
+    (5) INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC . Else llavA INSTRUCCIONES llavC
+
+    If              reduce using rule 4 (INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC .)
+    Nada            reduce using rule 4 (INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC .)
+    $end            reduce using rule 4 (INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC .)
+    llavC           reduce using rule 4 (INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC .)
+    Else            shift and go to state 54
+
+
+state 54
+
+    (5) INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC Else . llavA INSTRUCCIONES llavC
+
+    llavA           shift and go to state 55
+
+
+state 55
+
+    (5) INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC Else llavA . INSTRUCCIONES llavC
+    (2) INSTRUCCIONES -> . INSTRUCCIONES INSTRUCCION
+    (3) INSTRUCCIONES -> . INSTRUCCION
+    (4) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC
+    (5) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+    (6) INSTRUCCION -> . Nada
+
+    If              shift and go to state 4
+    Nada            shift and go to state 5
+
+    INSTRUCCIONES                  shift and go to state 56
+    INSTRUCCION                    shift and go to state 3
+
+state 56
+
+    (5) INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES . llavC
+    (2) INSTRUCCIONES -> INSTRUCCIONES . INSTRUCCION
+    (4) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC
+    (5) INSTRUCCION -> . If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC
+    (6) INSTRUCCION -> . Nada
+
+    llavC           shift and go to state 57
+    If              shift and go to state 4
+    Nada            shift and go to state 5
+
+    INSTRUCCION                    shift and go to state 6
+
+state 57
+
+    (5) INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC .
+
+    If              reduce using rule 5 (INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC .)
+    Nada            reduce using rule 5 (INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC .)
+    $end            reduce using rule 5 (INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC .)
+    llavC           reduce using rule 5 (INSTRUCCION -> If parA S parC llavA INSTRUCCIONES llavC Else llavA INSTRUCCIONES llavC .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for or in state 10 resolved as shift
+WARNING: shift/reduce conflict for and in state 11 resolved as shift

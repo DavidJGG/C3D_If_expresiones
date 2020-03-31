@@ -1,0 +1,31 @@
+if( a>b || d>c && 2>w || !(d>e && i<q) ){
+    nada
+}
+else{
+    nada
+}
+
+
+if( a>b || d>c && 2>w || !(d>e && i<q) ){
+    if( a>b || d>c && 2>w || !(d>e && i<q) ){
+        nada
+    }
+    else{
+        nada
+    }
+    if( a>b || d>c && 2>w || !(d>e && i<q) ){
+        nada
+    }
+    else{
+        nada
+    }
+    if( a>b || d>c && 2>w || !(d>e && i<q) ){
+        nada
+    }
+    else{
+        nada
+    }
+}
+else{
+    nada
+}
